@@ -25,7 +25,7 @@ const carreteraLayer = L.tileLayer('https://tile.waymarkedtrails.org/hiking/{z}/
 
 const markerLayer = L.layerGroup();
 const icono = L.icon({
-    iconUrl : './images/cit.png',
+    iconUrl : './images/marcador.png',
     iconSize : [35, 35]
 })
 
@@ -56,7 +56,7 @@ map.on('click', (e) => {
 
 
 const buscar = async () => {
-    const url = `/mapas1/API/mapa/buscar`;
+    const url = `/mapa/API/mapa/buscar`;
     const config = {
         method: 'GET'
     }
@@ -81,8 +81,14 @@ const buscar = async () => {
                     const popup = L.popup()
                         .setLatLng([latitud, longitud])
                         .setContent(`<p>Nombre: ${registro.mapa_nombre}</p>
+                                     <p>Latitud: ${latitud}</p>
+                                     <p>Longitud: ${longitud}</p>`);
+             
+
+                   
+
                                   
-                        `);
+                    
                    
                     NuevoMarcador.bindPopup(popup);
                     NuevoMarcador.addTo(markerLayer);
